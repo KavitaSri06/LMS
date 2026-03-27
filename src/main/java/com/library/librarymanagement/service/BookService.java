@@ -28,4 +28,9 @@ public class BookService {
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
+
+    public List<Book> searchBooks(String keyword) {
+        return bookRepository
+                .findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(keyword, keyword);
+    }
 }
